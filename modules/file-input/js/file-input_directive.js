@@ -10,6 +10,7 @@ angular.module('lumx.file-input', [])
             scope: {
                 label: '@',
                 value: '=',
+                accept:'=',
                 change: '&'
             },
             templateUrl: 'file-input.html',
@@ -18,6 +19,11 @@ angular.module('lumx.file-input', [])
             {
                 var $input = element.find('input'),
                     $fileName = element.find('.input-file__filename');
+
+                //add accept parameters if provided
+                if (angular.isDefined(scope.accept)){
+                    $input.attr('accept',scope.accept);
+                }
 
                 $input
                     .addClass('input-file__input')
